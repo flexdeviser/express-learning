@@ -7,6 +7,8 @@
   "scripts": {
     "start:dev": "nodemon",
     "build": "tsc",
+    "lint:ts": "eslint src/**/*.ts",
+    "pretty": "pretty-quick --staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -25,14 +27,14 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^3.0.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "express": "^4.17.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "yarn lint:ts && yarn pretty"
     }
   }
 }

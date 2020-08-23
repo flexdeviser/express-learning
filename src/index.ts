@@ -1,8 +1,10 @@
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+
+type RouteProps = { path: string; handler: (req: Request, res: Response, next: NextFunction) => void };
 
 type ServerProps = {
   port: number;
-  routes: Array<any>;
+  routes: Array<RouteProps>;
 };
 
 /**
@@ -15,10 +17,11 @@ const start = ({ port, routes }: ServerProps) => {
   return app;
 };
 
-const routes: Array<any> = [
+const routes: Array<RouteProps> = [
   {
     path: '/',
     handler: (req: Request, res: Response, next: NextFunction) => {
+      console.log(`${req.ip} ${res ? 'true' : 'false'} ${next.name}`);
       res.status(200).send({ data: 'Hello from Eric!' });
     },
   },
