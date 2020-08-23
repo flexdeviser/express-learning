@@ -7,9 +7,6 @@ type ServerProps = {
   routes: Array<RouteProps>;
 };
 
-/**
- *  1 start a express server
- **/
 const start = ({ port, routes }: ServerProps) => {
   const app = express();
   routes.map((_route) => app.use(_route.path, _route.handler));
@@ -17,6 +14,10 @@ const start = ({ port, routes }: ServerProps) => {
   return app;
 };
 
+/*
+ * @param port
+ * @param routes
+ */
 const routes: Array<RouteProps> = [
   {
     path: '/',
