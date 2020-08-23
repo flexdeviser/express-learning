@@ -6,6 +6,7 @@ type ServerProps = {
 };
 
 /**
+ *  1 start a express server
  **/
 const start = ({ port, routes }: ServerProps) => {
   const app = express();
